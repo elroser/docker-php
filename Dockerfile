@@ -1,7 +1,7 @@
 FROM php:7.0-apache
 
-ENV USER_ID=1000
-ENV GROUP_ID=1000
+ARG USER_ID=1000
+ARG GROUP_ID=1000
 
 RUN apt-get update \
     && apt-get install -y \
