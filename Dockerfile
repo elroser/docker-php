@@ -20,6 +20,7 @@ RUN apt-get update \
         pkg-config \
         libpcre3-dev \
     && docker-php-ext-install \
+        mcrypt \
         iconv \
         intl \
         mbstring \
