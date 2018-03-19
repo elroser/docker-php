@@ -2,6 +2,7 @@ FROM php:7.0-apache
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
+ENV DOCKERIZE_VERSION v0.6.0
 
 RUN apt-get update \
     && apt-get install -y \
@@ -31,6 +32,9 @@ RUN apt-get update \
     && docker-php-ext-install gd \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
+    wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
+    tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
+    rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     && rm /tmp/* -rf \
     && rm -r /var/lib/apt/lists/*
 
