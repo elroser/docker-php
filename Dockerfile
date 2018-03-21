@@ -20,6 +20,7 @@ RUN apt-get update \
         git \
         pkg-config \
         libpcre3-dev \
+        wget \
     && docker-php-ext-install \
         mcrypt \
         iconv \
