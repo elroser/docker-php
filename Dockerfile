@@ -38,8 +38,12 @@ RUN apt-get update \
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm /tmp/* -rf \
-    && rm -r /var/lib/apt/lists/*
-
+    && rm -r /var/lib/apt/lists/* \
+    && wget -O - https://download.newrelic.com/548C16BF.gpg | sudo apt-key add - \
+    && sh -c 'echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list' \
+    && apt-get update \
+    && apt-get install -y newrelic-php5 \
+    && NR_INSTALL_SILENT=1 newrelic-install install
 
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
