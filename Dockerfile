@@ -14,12 +14,12 @@ RUN apt-get update \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
         libpng-dev \
-        libapache2-mod-proxy-html \
         libxml2-dev \
         cron \
         sudo \
         acl \
         git \
+        gnupg \
         pkg-config \
         libpcre3-dev \
         wget \
