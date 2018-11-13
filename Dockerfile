@@ -66,6 +66,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
     && a2enmod proxy_connect \
     && a2enmod proxy_html
 
-CMD ["dockerize", "-stdout /var/www/html/api/runtime/", "apache2-foreground"]
+CMD ["dockerize", "-stdout", "/var/www/html/api/runtime/", "apache2-foreground"]
 
 
