@@ -19,6 +19,7 @@ RUN apt-get update \
         sudo \
         acl \
         git \
+        gnupg \
         pkg-config \
         libpcre3-dev \
         wget \
