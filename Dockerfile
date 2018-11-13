@@ -14,6 +14,8 @@ RUN apt-get update \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
         libpng-dev \
+        libapache2-mod-proxy-html \
+        libxml2-dev \
         cron \
         sudo \
         acl \
@@ -53,8 +55,17 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
     && chown -R www-data:www-data /var/www/.composer \
     && sudo -u www-data composer global require 'hirak/prestissimo:^0.3' \
     && sudo -u www-data composer global require phing/phing ~2.0 \
-    && a2enmod rewrite
+    && a2enmod rewrite \
+    && a2enmod proxy \
+    && a2enmod proxy_http \
+    && a2enmod proxy_ajp \
+    && a2enmod rewrite \
+    && a2enmod deflate \
+    && a2enmod headers \
+    && a2enmod proxy_balancer \
+    && a2enmod proxy_connect \
+    && a2enmod proxy_html
 
-
+CMD ["dockerize", "-stdout /var/www/html/api/runtime/", "apache2-foreground"]
 
 
