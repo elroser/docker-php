@@ -57,6 +57,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
     && sudo -u www-data composer global require phing/phing ~2.0 \
     && a2enmod rewrite \
     && a2enmod proxy \
+    && a2enmod headers \
     && a2enmod proxy_http \
     && a2enmod proxy_ajp \
     && a2enmod rewrite \
