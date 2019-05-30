@@ -1,8 +1,8 @@
-FROM php:7.0-apache
+FROM php:7.3-apache
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
-ENV DOCKERIZE_VERSION v0.6.0
+ENV DOCKERIZE_VERSION v0.6.1
 
 RUN apt-get update \
     && apt-get install -y \
