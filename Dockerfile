@@ -6,13 +6,13 @@ ENV DOCKERIZE_VERSION v0.6.1
 
 RUN apt-get update \
     && apt-get install -y \
-        libssl-dev \
+		libzip-dev \
+		libssl-dev \
         libicu-dev \
         libmcrypt-dev \
         libapache2-mod-rpaf \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
-        libmcrypt-dev \
         libpng-dev \
         libxml2-dev \
         cron \
@@ -24,7 +24,6 @@ RUN apt-get update \
         libpcre3-dev \
         wget \
     && docker-php-ext-install \
-        mcrypt \
         iconv \
         intl \
         mbstring \
@@ -46,6 +45,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y newrelic-php5 \
     && NR_INSTALL_SILENT=1 newrelic-install install
+
 
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
